@@ -13,6 +13,7 @@ members = [
   "raspberry-pi/ros2-integration",
   "raspberry-pi/sensors/bmp280-i2c",
   "raspberry-pi/utilities/udp-telemetry-receiver",
+  "common/control/differential-drive-mixer",
 ]
 
 default-members = [
