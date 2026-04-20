@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+  "common/sensors/ema-filter",
   "drivers/bme280",
   "esp32/communication/mqtt-telemetry-sender",
   "esp32/utilities/i2c-scanner",
