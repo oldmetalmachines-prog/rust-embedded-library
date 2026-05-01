@@ -276,7 +276,7 @@ After getting basic readings working:
 - [ ] **ROS2 integration** - Publish sensor_msgs/Imu topic
 
 **Related examples:**
-- UDP telemetry: `esp32/communication/wifi/udp-telemetry-sender/`
+- MQTT telemetry: `esp32/communication/mqtt-telemetry-sender/`
 - Sensor fusion: See `common/ALGORITHMS.md` (adskalman, ukf)
 
 ---

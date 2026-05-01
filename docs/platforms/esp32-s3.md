@@ -328,8 +328,10 @@ echo '. $HOME/export-esp.sh' >> ~/.bashrc
 ## Example Projects in This Library
 
 - `esp32/examples/wifi-tank/` - WiFi controlled robot
-- `esp32/sensors/examples/mpu6050-basic.rs` - I2C sensor reading
-- `esp32/sensors/examples/vl53l0x-distance.rs` - ToF sensor
+- `esp32/utilities/i2c-scanner/` - Find I2C device addresses
+- `esp32/sensors/examples/` - MPU6050 and VL53L0X READMEs (code pending)
+- `esp32/sensors/temperature-logger/` - BMP180 MQTT temperature logger
+- `esp32/communication/mqtt-telemetry-sender/` - MQTT telemetry over WiFi
 
 ---
 

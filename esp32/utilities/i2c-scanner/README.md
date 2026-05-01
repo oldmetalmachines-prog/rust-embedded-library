@@ -199,7 +199,7 @@ rustup target add riscv32imc-unknown-none-elf
 After confirming your I2C device is detected:
 
 1. **Note the address** - You'll need it for the sensor driver
-2. **Try a basic sensor example** - Like `esp32/sensors/examples/mpu6050-basic.rs`
+2. **Read the sensor README** - Like `esp32/sensors/examples/README.md` (MPU6050 guide)
 3. **If address doesn't match code** - Update the address constant in sensor driver
 4. **Build something!** - You've proven I2C works
 

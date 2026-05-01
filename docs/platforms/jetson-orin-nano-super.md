@@ -522,9 +522,10 @@ Jetson Orin Nano Super (Main Compute)
 
 ## Library Examples for Jetson
 
-See:
-- `jetson-orin/examples/` - Coming soon!
-- `raspberry-pi/ros2-integration/` - ROS2 examples work on Jetson
+- `jetson-orin/examples/gpio-blink/` - GPIO LED blink (Linux gpio-cdev)
+- `jetson-orin/examples/pwm-servo/` - PWM servo control via sysfs (with optional MQTT telemetry)
+- `jetson-orin/examples/rtsp-camera-streamer/` - GStreamer RTSP camera server (USB and CSI)
+- `raspberry-pi/ros2-integration/` - ROS2 examples (also work on Jetson)
 
 ---
 

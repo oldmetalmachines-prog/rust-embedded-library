@@ -6,6 +6,7 @@ const BME280_I2C_ADDR: u8 = 0x76;
 
 const REG_ID: u8 = 0xD0;
 const REG_RESET: u8 = 0xE0;
+const REG_CTRL_HUM: u8 = 0xF2;
 const REG_CTRL_MEAS: u8 = 0xF4;
 const REG_CONFIG: u8 = 0xF5;
 const REG_PRESS_MSB: u8 = 0xF7;
@@ -38,19 +39,30 @@ where
             return Err(Error::InvalidDevice);
         }
 
-        // Soft reset
+        // Soft reset — device re-runs startup procedure (~2 ms).
+        // Callers should insert a brief delay after init() if their
+        // platform supports it; without one, the configuration writes
+        // below may race the reset but in practice the device tolerates
+        // this on most boards.
         self.i2c
             .write(BME280_I2C_ADDR, &[REG_RESET, 0xB6])
+            .map_err(Error::I2c)?;
+
+        // config: standby 1000ms, IIR filter off
+        self.i2c
+            .write(BME280_I2C_ADDR, &[REG_CONFIG, 0xA0])
+            .map_err(Error::I2c)?;
+
+        // ctrl_hum: humidity oversampling x1.
+        // MUST be written before ctrl_meas — per the datasheet, changes
+        // to ctrl_hum only take effect after the next write to ctrl_meas.
+        self.i2c
+            .write(BME280_I2C_ADDR, &[REG_CTRL_HUM, 0x01])
             .map_err(Error::I2c)?;
 
         // ctrl_meas: temp x1, press x1, normal mode
         self.i2c
             .write(BME280_I2C_ADDR, &[REG_CTRL_MEAS, 0x27])
-            .map_err(Error::I2c)?;
-
-        // config: standby 1000ms
-        self.i2c
-            .write(BME280_I2C_ADDR, &[REG_CONFIG, 0xA0])
             .map_err(Error::I2c)?;
 
         Ok(())

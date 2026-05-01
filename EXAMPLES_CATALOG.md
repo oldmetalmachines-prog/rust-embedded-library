@@ -2,7 +2,7 @@
 
 Complete index of all working examples in this library, organized by platform and function.
 
-**Last Updated:** 2026-02-13
+**Last Updated:** 2026-04-09
 
 ---
 
@@ -10,8 +10,8 @@ Complete index of all working examples in this library, organized by platform an
 
 ### Path 1: ESP32 Beginner (Start Here!)
 1. `esp32/utilities/i2c-scanner/` - Verify I2C wiring works
-2. `esp32/sensors/examples/mpu6050-basic.rs` - Read your first sensor
-3. `esp32/communication/wifi/udp-telemetry-sender/` - Send data wirelessly
+2. `esp32/sensors/examples/` - MPU6050 README (code pending)
+3. `esp32/communication/mqtt-telemetry-sender/` - Send data wirelessly
 
 ### Path 2: Raspberry Pi Beginner
 1. `raspberry-pi/gpio/rppal-examples/gpio_blinkled.rs` - Blink an LED
@@ -19,7 +19,7 @@ Complete index of all working examples in this library, organized by platform an
 3. `raspberry-pi/ros2-integration/` - Connect to ROS2
 
 ### Path 3: Pico 2W Beginner
-1. `raspberry-pi/pico-2w/examples/led-blink/` - Blink onboard LED
+1. Coming soon: Pico 2W examples are planned (see `docs/platforms/pi-pico-2w.md` for setup)
 2. Coming soon: GPIO sensor examples
 
 ---
@@ -36,19 +36,19 @@ Complete index of all working examples in this library, organized by platform an
 #### 📡 Communication
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `esp32/communication/wifi/udp-telemetry-sender/` | Send sensor data via WiFi | ESP32, WiFi network | ⭐⭐ Intermediate |
+| `esp32/communication/mqtt-telemetry-sender/` | Send telemetry via MQTT over WiFi | ESP32, WiFi network | ⭐⭐ Intermediate |
 
 #### 📊 Sensors
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `esp32/sensors/examples/mpu6050-basic.rs` | Read IMU (accel/gyro) | ESP32, MPU6050, pull-ups | ⭐⭐ Intermediate |
-| `esp32/sensors/examples/vl53l0x-distance.rs` | ToF laser distance | ESP32, VL53L0X | ⭐⭐ Intermediate |
+| `esp32/sensors/examples/` (README only) | MPU6050 IMU — code pending | ESP32, MPU6050, pull-ups | ⭐⭐ Intermediate |
+| `esp32/sensors/examples/` (README only) | VL53L0X ToF distance — code pending | ESP32, VL53L0X | ⭐⭐ Intermediate |
 | `esp32/sensors/temperature-logger/` | MQTT temperature logger | ESP32, BMP180, WiFi | ⭐⭐⭐ Advanced |
 
 #### 🎮 Complete Projects
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `esp32/examples/snake-game/` | OLED snake game | ESP32, OLED, joystick | ⭐⭐⭐ Advanced |
+| `esp32/examples/snake-complete/` | OLED snake game | ESP32, OLED, joystick | ⭐⭐⭐ Advanced |
 | `esp32/examples/wifi-tank/` | WiFi controlled rover | ESP32, motors, driver | ⭐⭐⭐ Advanced |
 | `esp32/examples/std-demo/` | WiFi + HTTP + LED | ESP32, LED screen | ⭐⭐⭐ Advanced |
 
@@ -76,8 +76,7 @@ Complete index of all working examples in this library, organized by platform an
 #### 🤖 ROS2 Integration
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `raspberry-pi/ros2-integration/examples/ros2_imu_publisher.rs` | Publish IMU to ROS2 | Pi, MPU6050 | ⭐⭐⭐ Advanced |
-| `raspberry-pi/ros2-integration/examples/ros2_motor_controller.rs` | Subscribe to cmd_vel | Pi, motors | ⭐⭐⭐ Advanced |
+| `raspberry-pi/ros2-integration/` | ROS2 package scaffold (examples planned) | Pi, ROS2 Humble | ⭐⭐⭐ Advanced |
 
 ---
 
@@ -86,7 +85,9 @@ Complete index of all working examples in this library, organized by platform an
 #### 💡 Basic Examples
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `raspberry-pi/pico-2w/examples/led-blink/` | Blink onboard LED | Pico 2W, USB cable | ⭐ Beginner |
+| (coming soon) | Blink onboard LED | Pico 2W, USB cable | ⭐ Beginner |
+
+See `docs/platforms/pi-pico-2w.md` for toolchain setup and project templates.
 
 ---
 
@@ -100,11 +101,8 @@ Complete index of all working examples in this library, organized by platform an
 #### 🎥 Computer Vision
 | Example | Purpose | Hardware Needed | Difficulty |
 |---------|---------|-----------------|------------|
-| `jetson-orin/examples/rtsp-camera-streamer/` | RTSP camera stream (WIP) | Jetson, CSI/USB camera | ⭐⭐ Intermediate |
-
-**Note:** RTSP example is Work In Progress - basic structure complete, implementation pending
-
-
+| `jetson-orin/examples/rtsp-camera-streamer/` | GStreamer RTSP camera server (USB + CSI) | Jetson, CSI/USB camera | ⭐⭐ Intermediate |
+| `jetson-orin/examples/pwm-servo/` | Sysfs PWM servo (with MQTT telemetry) | Jetson, servo motor | ⭐⭐ Intermediate |
 
 #### 🎥 Computer Vision (Coming Soon)
 - Camera capture with opencv-rust
@@ -116,16 +114,15 @@ Complete index of all working examples in this library, organized by platform an
 ## 🎓 By Learning Topic
 
 ### First Steps (Absolute Beginners)
-1. **Blink LED** - `raspberry-pi/gpio/rppal-examples/gpio_blinkled.rs` (Pi) or `raspberry-pi/pico-2w/examples/led-blink/` (Pico 2W)
+1. **Blink LED** - `raspberry-pi/gpio/rppal-examples/gpio_blinkled.rs` (Pi) or Pico 2W examples (coming soon)
 2. **I2C Scanner** - `esp32/utilities/i2c-scanner/` (ESP32)
 3. **Read Button** - `raspberry-pi/gpio/rppal-examples/gpio_status.rs` (Pi)
 
 ### Sensor Reading
-1. **I2C IMU** - `esp32/sensors/examples/mpu6050-basic.rs`
+1. **I2C IMU** - `esp32/sensors/examples/` (MPU6050 README; code pending)
 2. **I2C RTC** - `raspberry-pi/gpio/rppal-examples/i2c_ds3231.rs`
-3. **Distance Sensor** - `esp32/sensors/examples/vl53l0x-distance.rs`
-2. **IMU Publisher** - `raspberry-pi/ros2-integration/examples/ros2_imu_publisher.rs`
-3. **Motor Controller** - `raspberry-pi/ros2-integration/examples/ros2_motor_controller.rs`
+3. **Pressure/Temp** - `raspberry-pi/sensors/bmp280-i2c/`
+4. **Distance Sensor** - `esp32/sensors/examples/` (VL53L0X README; code pending)
 
 ---
 
@@ -134,17 +131,17 @@ Complete index of all working examples in this library, organized by platform an
 ### Sensors
 
 #### IMU (Motion/Orientation)
-- **MPU6050** (6-axis): `esp32/sensors/examples/mpu6050-basic.rs`
+- **MPU6050** (6-axis): `esp32/sensors/examples/` (README only, code pending)
 - **BNO055** (9-axis): Documentation only
 
 #### Distance
-- **VL53L0X** (ToF laser): `esp32/sensors/examples/vl53l0x-distance.rs`
+- **VL53L0X** (ToF laser): `esp32/sensors/examples/` (README only, code pending)
 - **VL53L1X** (4m range): Documentation only
 
 #### Environment
 - **BMP180** (pressure/temp): `esp32/sensors/temperature-logger/`
-- **BMP280**: Documentation only
-- **BME280** (humidity): Documentation only
+- **BMP280**: `raspberry-pi/sensors/bmp280-i2c/` (working, with MQTT telemetry)
+- **BME280** (humidity): `drivers/bme280/` (no_std driver library)
 
 #### Time
 - **DS3231** (RTC): `raspberry-pi/gpio/rppal-examples/i2c_ds3231.rs`
@@ -154,7 +151,7 @@ Complete index of all working examples in this library, organized by platform an
 #### LEDs
 - **Simple LED**: `raspberry-pi/gpio/rppal-examples/gpio_blinkled.rs`
 - **PWM LED**: `raspberry-pi/gpio/rppal-examples/pwm_blinkled.rs`
-- **OLED Display**: `esp32/examples/snake-game/`
+- **OLED Display**: `esp32/examples/snake-complete/`
 
 #### Motors
 - **Servo**: `raspberry-pi/gpio/rppal-examples/pwm_servo.rs`
@@ -163,9 +160,9 @@ Complete index of all working examples in this library, organized by platform an
 ### Communication
 
 #### Wireless
-- **WiFi**: `esp32/communication/wifi/udp-telemetry-sender/`
-- **UDP**: Both sender and receiver examples
-- **MQTT**: `esp32/sensors/temperature-logger/`
+- **WiFi + MQTT**: `esp32/communication/mqtt-telemetry-sender/`
+- **UDP receiver**: `raspberry-pi/utilities/udp-telemetry-receiver/`
+- **MQTT over WiFi**: `esp32/sensors/temperature-logger/` (BMP180 temperature logger)
 
 #### Wired
 - **I2C**: Multiple sensor examples
@@ -226,35 +223,37 @@ Complete index of all working examples in this library, organized by platform an
 
 | Status | Count | Description |
 |--------|-------|-------------|
-| ✅ Complete | 18 | Full code + README following contract |
-| 📝 Documented | 5 | README only, code in progress |
+| ✅ Complete | 16 | Full code + README following contract |
+| 📝 Documented | 2 | README only, code pending (MPU6050, VL53L0X) |
 | 🚧 Planned | 12 | On roadmap |
 
-### ✅ Complete Examples (18)
+### ✅ Complete Examples (16)
 
 **ESP32:**
 1. I2C Scanner
 2. UDP Telemetry Sender
-3. MPU6050 Basic
-4. VL53L0X Distance
-5. Temperature Logger
-6. Snake Game
-7. WiFi Tank
-8. STD Demo
+3. Temperature Logger
+4. Snake Game (`esp32/examples/snake-complete/`)
+5. WiFi Tank
+6. STD Demo
 
 **Raspberry Pi:**
-9. UDP Telemetry Receiver
-10. GPIO LED Blink
-11. GPIO Button
-12. GPIO Multithreaded
-13. PWM LED Fade
-14. PWM Servo
-15. I2C DS3231
-16. SPI EEPROM
-17. UART Blocking Read
+7. UDP Telemetry Receiver
+8. GPIO LED Blink
+9. GPIO Button
+10. GPIO Multithreaded
+11. PWM LED Fade
+12. PWM Servo
+13. I2C DS3231
+14. SPI EEPROM
+15. UART Blocking Read
+16. BMP280 I2C Sensor
 
-**Pico 2W:**
-18. LED Blink
+### 📝 README Only — Code Pending (2)
+
+**ESP32:**
+- MPU6050 Basic (README in `esp32/sensors/examples/`)
+- VL53L0X Distance (README in `esp32/sensors/examples/`)
 
 ### 🚧 Planned Examples
 
@@ -304,8 +303,8 @@ Complete index of all working examples in this library, organized by platform an
 
 ## 📊 Statistics
 
-- **Total Examples:** 18 complete
-- **Platforms:** 3 (ESP32, Raspberry Pi, Pico 2W)
+- **Total Examples:** 16 complete (2 README-only)
+- **Platforms:** 4 (ESP32, Raspberry Pi, Pico 2W, Jetson Orin)
 - **Communication Protocols:** I2C, SPI, UART, WiFi, UDP, MQTT
 - **Sensors Supported:** 7+ types
 - **Lines of Example Code:** ~3000+

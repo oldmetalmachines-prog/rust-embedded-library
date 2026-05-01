@@ -10,17 +10,15 @@ A curated collection of Rust embedded code for ESP32, Raspberry Pi, and robotics
 
 ### ESP32 Development
 
-#### Examples (5 complete projects)
-- **esp32/examples/snake-game/** - OLED display + joystick game
-- **esp32/examples/snake-complete/** - Complete version with full features
+#### Examples (4 complete projects)
+- **esp32/examples/snake-complete/** - OLED display + joystick game
 - **esp32/examples/wifi-tank/** - WiFi controlled robot with motors
 - **esp32/examples/std-demo/** - WiFi + HTTP server + LED screen
 - **esp32/sensors/temperature-logger/** - MQTT + BMP180 sensor
 
-#### Sensor Examples (3 working examples)
-- **mpu6050-basic.rs** - 6-axis IMU (accelerometer + gyroscope)
-- **vl53l0x-distance.rs** - Time-of-Flight laser distance sensor
-- Complete with wiring diagrams and dependencies
+#### Sensor Examples (READMEs with code pending)
+- **esp32/sensors/examples/** - MPU6050 IMU: full wiring diagram and dependency guide
+- **esp32/sensors/examples/** - VL53L0X ToF distance sensor: full wiring diagram and dependency guide
 
 #### ESP32-P4 Specific
 - Dual-core RISC-V robotics template
@@ -37,10 +35,10 @@ A curated collection of Rust embedded code for ESP32, Raspberry Pi, and robotics
 - SPI EEPROM
 - UART serial communication
 
-#### ROS2 Integration (2 examples)
-- **ros2_imu_publisher.rs** - Publish IMU data to ROS2
-- **ros2_motor_controller.rs** - Subscribe to /cmd_vel for motor control
-- Complete setup guide for ROS2 Jazzy
+#### ROS2 Integration (package scaffold)
+- **raspberry-pi/ros2-integration/** - Package scaffold with all dependencies wired up
+- Example source files (IMU publisher, motor controller) are planned
+- Complete setup guide: `raspberry-pi/ros2-integration/SETUP.md`
 
 ### Dependency Templates (5 templates)
 
@@ -93,15 +91,14 @@ cp ../dependencies/cargo-templates/raspberry-pi-robotics.toml Cargo.toml
 cp ../raspberry-pi/gpio/rppal-examples/gpio_blinkled.rs src/main.rs
 ```
 
-### 4. Test a Sensor Example
+### 4. Read a Sensor Example README
 ```bash
-# ESP32 IMU example
-cd esp32/sensors/examples/
-cat mpu6050-basic.rs  # Review wiring and code
+# ESP32 IMU example (README with wiring + dependency guide)
+cat esp32/sensors/examples/README.md
 
-# Add to your project's src/main.rs
-# Wire up sensor according to comments
-# cargo run --release
+# Wire up sensor according to the wiring diagram
+# Copy the dependency block into your project's Cargo.toml
+# Implement the code stub shown in the README
 ```
 
 ---
@@ -249,12 +246,12 @@ sudo apt install ros-jazzy-desktop
 
 ## 📊 Library Statistics
 
-- **ESP32 Examples**: 5 complete projects
-- **Sensor Drivers**: 3 working examples  
-- **Raspberry Pi Examples**: 12 GPIO examples
-- **ROS2 Examples**: 2 integration examples
+- **ESP32 Examples**: 4 complete projects + 2 sensor READMEs (code pending)
+- **Raspberry Pi Examples**: 12 GPIO examples, 1 BMP280 sensor
+- **Jetson Orin Examples**: 3 (GPIO blink, PWM servo, RTSP camera)
+- **ROS2**: Package scaffold in `raspberry-pi/ros2-integration/` (examples planned)
 - **Cargo Templates**: 5 ready-to-use templates
-- **Total .rs Files**: 24+ working examples
+- **Custom Drivers**: BME280 no_std driver in `drivers/bme280/`
 
 ---
 

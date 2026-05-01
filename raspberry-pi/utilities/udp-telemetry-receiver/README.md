@@ -4,7 +4,7 @@
 
 Receives UDP packets from ESP32 or other embedded senders and logs them to JSONL, CSV, or both.
 
-This is the companion to `esp32/communication/wifi/udp-telemetry-sender/`, but it is intentionally generic: it does not decode a telemetry schema yet. It records packet metadata plus the payload as UTF-8 when possible, or as a hex string when the payload is binary.
+This tool is intentionally generic and works with any UDP-sending device. It does not decode a telemetry schema yet. It records packet metadata plus the payload as UTF-8 when possible, or as a hex string when the payload is binary.
 
 Use cases:
 - Capture telemetry traffic during bring-up
@@ -155,5 +155,5 @@ Possible future improvements:
 
 ## Reference Documents
 
-- Companion sender: `esp32/communication/wifi/udp-telemetry-sender/README.md`
+- Any UDP-sending ESP32 project (e.g. a custom sketch using `esp-idf-svc` UDP sockets)
 - Protocol references: `common/protocols/`

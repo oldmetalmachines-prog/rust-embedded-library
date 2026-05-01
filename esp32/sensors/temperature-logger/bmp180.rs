@@ -38,7 +38,7 @@ where
         let ac2 = ((data[2] as u16) << 8 | data[3] as u16) as i16 as i32;
         let ac3 = ((data[4] as u16) << 8 | data[5] as u16) as i16 as i32;
         let ac4 = ((data[6] as u16) << 8 | data[7] as u16) as i16 as i32;
-        let ac5 = ((data[8] as u16) << 8 | data[8] as u16) as i16 as i32;
+        let ac5 = ((data[8] as u16) << 8 | data[9] as u16) as i16 as i32;
         let ac6 = ((data[10] as u16) << 8 | data[11] as u16) as i16 as i32;
         let b1 = ((data[12] as u16) << 8 | data[13] as u16) as i16 as i32;
         let b2 = ((data[14] as u16) << 8 | data[15] as u16) as i16 as i32;

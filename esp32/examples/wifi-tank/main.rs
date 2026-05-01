@@ -105,12 +105,17 @@ async fn main(spawner: Spawner) {
     wifi_controller.start().await.unwrap();
     delay.delay(1000.millis());
     log::info!("Pre-wifi connect");
+    let mut connected = false;
     for i in 0..20 {
         if wifi_controller.connect().await.is_ok() {
+            connected = true;
             break;
         }
         log::info!("Failed to connect, retrying - try {}...", i);
         delay.delay(1000.millis());
+    }
+    if !connected {
+        core::panic!("Failed to connect to WiFi after 20 attempts");
     }
 
     // embassy-net setup

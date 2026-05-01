@@ -197,7 +197,7 @@ impl<'a> TinyMqtt<'a> {
             self.recv_buffer[self.recv_index..][..len].copy_from_slice(&buffer[..len]);
             self.recv_index += len;
 
-            let data = self.recv_buffer[..len].as_ref();
+            let data = self.recv_buffer[..self.recv_index].as_ref();
             let packet = decode_slice(data);
 
             if let Ok(Some(packet)) = packet {

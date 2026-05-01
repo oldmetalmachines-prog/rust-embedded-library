@@ -6,7 +6,7 @@ edition = "2021"
 
 [dependencies]
 # Raspberry Pi GPIO/peripherals
-rppal = { version = "0.17", features = ["hal"] }
+rppal = { version = "0.22", features = ["hal"] }
 
 # Async runtime
 tokio = { version = "1", features = ["full"] }
@@ -38,7 +38,7 @@ tokio-serial = "5.4"  # Serial communication
 socket2 = "0.5"
 
 # MQTT
-rumqttc = "0.23"
+rumqttc = "0.24"
 
 # Serialization
 serde = { version = "1.0", features = ["derive"] }
