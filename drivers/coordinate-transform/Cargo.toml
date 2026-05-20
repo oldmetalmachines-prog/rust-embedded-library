@@ -1,0 +1,9 @@
+[package]
+name = "coordinate-transform"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Tiny no_std 2D pose transform helpers for robotics"
+
+[dependencies]
+libm = "0.2"
