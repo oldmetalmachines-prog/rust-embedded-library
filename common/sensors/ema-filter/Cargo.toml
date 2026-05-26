@@ -1,0 +1,13 @@
+[package]
+name = "ema-filter"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "no_std exponential moving average filter utilities for robotics sensor streams"
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+default = []
+std = []
